@@ -12,8 +12,8 @@ requirments
 
 usage
 ===========
-*  run homework03.py with args like: \\h, \\v, \\a . you can also combine them .such as`$ python homework03.py \\h \\v \\a input2.txt`
-*  I have add comments on the necessary place.
+*  run homework03.py with args like: \\\h, \\\v, \\\a . you can also combine them .such as`$ python homework03.py \\h \\v \\a input2.txt`
+*  I have added comments on the necessary place.
 
 License
 ===========
