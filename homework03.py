@@ -35,7 +35,7 @@ class MyFrame(wx.Frame):    # 主界面
                 if_h = True
             if "\\v" in sys.argv:
                 if_v = True
-            self.nb.AddPage(cjlists(self.nb, temparg[1], temparg[2], if_h, if_v), "Table 1")
+            self.nb.AddPage(cjlists(self.nb, temparg[0], temparg[1], temparg[2], if_h, if_v), "Table 1")
             daishumao.setglobalvar()
         alldata.close()
 
@@ -56,7 +56,7 @@ class MyFrame(wx.Frame):    # 主界面
                 if "\\v" in sys.argv:
                     if_v = True
                 daishumao.setglobalvar()
-                self.nb.AddPage(cjlists(self.nb, temparg[1], temparg[2], if_h, if_v), "Table %d" % (count))
+                self.nb.AddPage(cjlists(self.nb, temparg[0], temparg[1], temparg[2], if_h, if_v), "Table %d" % (count))
                 count += 1
             alldata.close()
             self.nb.SetSelection(lastselect)
@@ -82,7 +82,7 @@ class MyFrame(wx.Frame):    # 主界面
 
 class cjlists(wx.Panel):   # Tab类，按照参数生成矩阵
 
-    def __init__(self, parent, allnum, theanswer, if_h, if_v):
+    def __init__(self, parent, maxnum, allnum, theanswer, if_h, if_v):
         wx.Panel.__init__(self, parent)
         self.grid = wx.grid.Grid(self)
         self.n = len(allnum)
@@ -97,8 +97,11 @@ class cjlists(wx.Panel):   # Tab类，按照参数生成矩阵
         self.grid.AutoSize()
         boxsizer1 = wx.BoxSizer(wx.HORIZONTAL)
         boxsizer2 = wx.BoxSizer(wx.VERTICAL)
+        themax = wx.StaticText(self, label="%s" % maxnum)
+        themax.SetForegroundColour((255, 0, 0))
         boxsizer1.Add(self.grid, 2, flag=wx.ALL, border=0)
         boxsizer1.Add(boxsizer2, 1, flag=wx.ALL, border=0)
+        boxsizer2.Add(themax, 1, flag=wx.CENTER, border=0)
         if if_h:
             self.button1 = wx.Button(self, -1, "→")
             self.Bind(wx.EVT_BUTTON, self.OnClickRight, self.button1)
